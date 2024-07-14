@@ -21,7 +21,7 @@
   <ItemGroup>
     <ClInclude Include="MyGame.h" />
     <ClInclude Include="MyGameState.h" />
-    <ClInclude Include="FrameTimingInfo.h" />
+    <ClInclude Include="FrameTiming.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyGameState.cpp" />

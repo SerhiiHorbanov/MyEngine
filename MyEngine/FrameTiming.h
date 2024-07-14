@@ -1,9 +1,10 @@
 #pragma once
 #include <chrono>
+#include <thread>
 
 using namespace std::chrono;
 
-struct FrameTimingInfo
+struct FrameTiming
 {
 public:
     steady_clock::time_point LastFrameTime;
@@ -32,7 +33,22 @@ public:
         _targetFPS = seconds(1) / newTargetDeltaTime;
     }
 
+    void Timing()
+    {
+        DeltaTime = steady_clock::now() - LastFrameTime;
+
+        if (DeltaTime < GetTargetDeltaTime())
+        {
+            steady_clock::duration timeToSleep = GetTargetDeltaTime() - DeltaTime;
+            std::this_thread::sleep_for(timeToSleep);
+        }
+        DeltaTime = steady_clock::now() - LastFrameTime;
+        DeltaSeconds = DeltaTime / seconds(1);
+        DeltaMilliseconds = DeltaTime / milliseconds(1);
+    }
+
 private:
     unsigned int _targetFPS;
     steady_clock::duration _targetDeltaTime;
+
 };

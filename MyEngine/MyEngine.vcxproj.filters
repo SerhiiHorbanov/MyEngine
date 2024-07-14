@@ -21,7 +21,7 @@
     <ClInclude Include="MyGameState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FrameTimingInfo.h">
+    <ClInclude Include="FrameTiming.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
