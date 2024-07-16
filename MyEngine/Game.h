@@ -1,7 +1,8 @@
 #pragma once
+#include <deque>
 #include <memory>
-#include "GameState.h"
 #include "FrameTiming.h"
+#include "GameState.h"
 
 namespace MyEngine
 {
@@ -10,19 +11,22 @@ namespace MyEngine
     public:
         bool end = false;
 
+        FrameTiming Time;
+        std::deque<std::shared_ptr<GameState>> NextStates;
+    protected:
+        std::shared_ptr<GameState> _state;
+
+    public:
         Game(std::shared_ptr<GameState> state)
         {
-            State = state;
+            _state = state;
         }
 
-        FrameTiming Time;
-        std::shared_ptr<GameState> State;
+        void SetState(std::shared_ptr<GameState> state);
+        std::shared_ptr<GameState> GetState();
 
-        virtual void Run()
-        {
-            State->Initialize(*this);
-            while (!end)
-                State->GameLoopIteration(*this);
-        }
+        virtual void Run();
+    private:
+        void CheckForChangingState();
     };
 }
