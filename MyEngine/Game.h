@@ -17,7 +17,7 @@ namespace MyEngine
         std::shared_ptr<GameState> _state;
 
     public:
-        Game(std::shared_ptr<GameState> state)
+        Game(FrameTiming timing, std::shared_ptr<GameState> state)
         {
             _state = state;
         }

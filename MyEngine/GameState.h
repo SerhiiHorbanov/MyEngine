@@ -3,7 +3,6 @@
 namespace MyEngine
 {
     class Game;
-    //whem deriving from MyGameState it is recommended to also derive std::enable_shared_from_this<MyGameState> with public access
     class GameState
     {
     public:
